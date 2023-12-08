@@ -23,4 +23,3 @@ public class DbUtil {
 		return con;
 	}
 }
-

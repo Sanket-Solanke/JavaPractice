@@ -1,5 +1,6 @@
 package com.sunbeam;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class User {
@@ -9,6 +10,15 @@ public class User {
 	String email;
 	String password;
 	String mobile;
+	java.util.Date birth;
+	
+	
+	public java.util.Date getBirth() {
+		return birth;
+	}
+	public void setBirth(java.util.Date birth) {
+		this.birth = birth;
+	}
 	public int getId() {
 		return id;
 	}
@@ -47,7 +57,7 @@ public class User {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstName, id, lastName, mobile, password);
+		return Objects.hash(birth, email, firstName, id, lastName, mobile, password);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -58,25 +68,38 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
-				&& Objects.equals(lastName, other.lastName) && Objects.equals(mobile, other.mobile)
-				&& Objects.equals(password, other.password);
+		return id == other.id;
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", mobile=" + mobile + "]";
+		return "|ID=" + id + "|" + firstName + " "+ lastName + " (" + email+ ")";
 	}
-	public User(int id, String firstName, String lastName, String email, String password, String mobile) {
+	public User(String firstName, String lastName, String email, String password, String mobile, Date birth) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
 		this.mobile = mobile;
+		this.birth = birth;
 	}
 	
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
 	
+	public User( String password) {
+		super();
+		this.password = password;
+	}
+	public User(int id, String firstName, String lastName, String email) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
 	
 }
